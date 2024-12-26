@@ -9,6 +9,7 @@ class Ball:
         self.y = y
         self.dy = dy
         self.dx = dx
+        self.mass = radius ** 2  # Mass is proportional to the square of the radius
 
     def move(self):
         self.x += self.dx
@@ -56,10 +57,11 @@ class Ball:
         change_in_speed_y = (relative_speed_x * math.cos(angle) + relative_speed_y * math.sin(angle)) * math.sin(angle)
         
         # calculate the new velocities after the collision
-        self.dx -= change_in_speed_x
-        self.dy -= change_in_speed_y
-        ball.dx += change_in_speed_x
-        ball.dy += change_in_speed_y
+        total_mass = self.mass + ball.mass
+        self.dx -= (2 * ball.mass / total_mass) * change_in_speed_x
+        self.dy -= (2 * ball.mass / total_mass) * change_in_speed_y
+        ball.dx += (2 * self.mass / total_mass) * change_in_speed_x
+        ball.dy += (2 * self.mass / total_mass) * change_in_speed_y
         
         # separate the balls to avoid overlap
         overlap = 0.5 * (self.radius + ball.radius - distance + 1)
