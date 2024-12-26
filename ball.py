@@ -2,13 +2,13 @@ import pygame
 import math
 
 class Ball:
-    def __init__(self, farge, radius, x, y, dy, dx):
+    def __init__(self, farge, radius, x, y, dx, dy):
         self.farge = farge
         self.radius = radius
         self.x = x
         self.y = y
-        self.dy = dy
         self.dx = dx
+        self.dy = dy
         self.mass = radius ** 2  # Mass is proportional to the square of the radius
 
     def move(self):

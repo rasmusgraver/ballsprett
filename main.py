@@ -1,5 +1,6 @@
 import pygame
 from ball import Ball
+from gravitasjonsball import Gravitasjonsball
 
 def main():
     # Initialize Pygame
@@ -18,6 +19,7 @@ def main():
     balls.append(Ball((0, 0, 100), 30, 150, 100, 7, -2))
     balls.append(Ball((30, 50, 0), 5, 200, 150, -5, 3))
     balls.append(Ball((0, 100, 100), 15, 100, 250, 4, -4))
+    balls.append(Gravitasjonsball((140, 140, 0), 35, 100, 40, 4, 0))
 
     # Main loop
     running = True
